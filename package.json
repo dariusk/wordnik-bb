@@ -1,0 +1,41 @@
+{
+  "name": "wordnik-bb",
+  "description": "An interface to the Wordnik API, which lets you get dictionary definitions, random words, pronunciation, and more! Built with Backbone.js.",
+  "version": "0.1.0",
+  "homepage": "https://github.com/dariusk/wordnik-bb",
+  "author": {
+    "name": "Darius Kazemi",
+    "email": "darius.kazemi@gmail.com",
+    "url": "http://tinysubversions.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/dariusk/wordnik-bb.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dariusk/wordnik-bb/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/dariusk/wordnik-bb/blob/master/LICENSE-MIT"
+    }
+  ],
+  "main": "lib/wordnik-bb",
+  "dependencies": {
+    "underscore": ">=1.4.4",
+    "backbone": ">=0.9.10",
+    "request": "2.12.0",
+    "jquery": "1.8.3"
+  },
+  "engines": {
+    "node": ">=0.8.0"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "devDependencies": {
+    "grunt": "~0.3.17"
+  },
+  "keywords": []
+}
