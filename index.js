@@ -3,23 +3,9 @@ var Wordnik = require('./lib/wordnik-bb.js').init(APIKEY);
 var $ = require('jquery');
 
 var word = new Wordnik.Word({word: 'king', params:{includeSuggestions:true}});
-// Make it so that the get functions return promises!
-$.when( 
-    word.getExamples(),
-    word.getDefinitions(),
-    word.getTopExample(),
-    word.getRelatedWords(),
-    word.getPronunciations(),
-    word.getScrabbleScore(),
-    word.getHyphenation(),
-    word.getFrequency(),
-    word.getPhrases(),
-    word.getEtymologies(),
-    word.getAudio()
-  )
-  .then(function() {
+
+word.getEverything()
+  .then( function() {
     console.log(word);
-  })
-  .fail(function() {
-    console.log("failed!");
   });
+
