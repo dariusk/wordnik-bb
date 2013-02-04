@@ -11,10 +11,13 @@ word.getEverything()
   });
 */
 
-var random = new Wordnik.RandomWord({params:{
-  includePartOfSpeech: "verb-transitive",
-  minCorpusCount: 10000
-}});
+var random = new Wordnik.RandomWord({
+  params: {
+    includePartOfSpeech: "verb-transitive",
+    minCorpusCount: 10000
+  }
+});
+
 random.getRandomWord()
   .then( function() {
     console.log("Here's a random word: " + random.get("word"));
