@@ -6,7 +6,15 @@ var word = new Wordnik.Word({word: 'kings', params:{includeSuggestions:true}});
 word.getWord().then(function(word) {
   word.getExamples().then(function(word) {
     word.getDefinitions().then(function(word) {
-      console.log(word);
+      word.getTopExample().then(function(word) {
+        word.getRelatedWords().then(function(word) {
+          word.getPronunciations().then(function(word) {
+            word.getScrabbleScore().then(function(word) {
+              console.log(word);
+            });
+          });
+        });
+      });
     });
   }); 
 });
