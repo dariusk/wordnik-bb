@@ -3,4 +3,10 @@ var Wordnik = require('./lib/wordnik-bb.js').init(APIKEY);
 
 var word = new Wordnik.Word({word: 'kings', params:{includeSuggestions:true}});
  
-word.getWord();
+word.getWord().then(function(word) {
+ word.getExamples().then(function(word) {
+  word.getDefinitions().then(function(word) {
+    console.log(word);
+});
+}); 
+});
