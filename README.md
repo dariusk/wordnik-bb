@@ -3,11 +3,9 @@
 An interface to the Wordnik API, which lets you get dictionary definitions, random words, pronunciation, and more! Built with Backbone.js.
 
 ## Getting Started
-Install the module with: `npm install wordnik-bb`
 
 ```javascript
 var wordnik_bb = require('wordnik-bb');
-wordnik_bb.awesome(); // "awesome"
 ```
 
 ## Documentation
