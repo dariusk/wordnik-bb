@@ -42,5 +42,9 @@ exports['init'] = {
     var word = new this.W.Word({ word: 'kings' });
     test.ok(word.idAttribute, "Word constructor returns a Backbone Model");
     test.done();
+  },
+  tearDown: function(done) {
+    delete this.W;
+    done();
   }
 };
