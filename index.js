@@ -17,4 +17,9 @@ var randomWordPromise = Wordnik.getRandomWordModel({
 );
 randomWordPromise.done(function(word) {
   console.log("The model for our random word: ", word);
+  // We could also get more info about the random word:
+  // word.getEverything()
+  //   .then( function() {
+  //      console.log("And now we've populated the model with all the available data: ", word);
+  //   }
 });
