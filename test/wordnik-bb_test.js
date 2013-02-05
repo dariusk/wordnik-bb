@@ -26,7 +26,7 @@ var wordnik_bb = require('../lib/wordnik-bb.js');
 exports['init'] = {
   setUp: function(done) {
     // setup here
-    this.Wordnik = wordnik_bb.init('');
+    this.W = wordnik_bb.init('');
     done();
   },
   'Wordnik object structure': function(test) {
@@ -38,8 +38,8 @@ exports['init'] = {
   },
   'Word model': function(test) {
     test.expect(2);
-    test.equal(typeof this.Wordnik.Word, "function", "Word is a function (constructor)");
-    var word = new this.Wordnik.Word({ word: 'kings' });
+    test.equal(typeof this.W.Word, "function", "Word is a function (constructor)");
+    var word = new this.W.Word({ word: 'kings' });
     test.ok(word.idAttribute, "Word constructor returns a Backbone Model");
     test.done();
   }
