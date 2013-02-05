@@ -1,6 +1,5 @@
 var APIKEY = 'd4711e36506fe047f12970c6fdc0b43f6e4fef2e855e03d5c';
 var Wordnik = require('./lib/wordnik-bb.js').init(APIKEY);
-var $ = require('jquery');
 
 // Here's an example of declaring a new word and then populating it with the data from every available word method.
 var word = new Wordnik.Word({word: 'king', params:{includeSuggestions:true}});
