@@ -2,7 +2,7 @@ var _ = require('underscore');
 var Backbone = require('backbone');
 
 var wordnik_bb = require('../lib/wordnik-bb.js');
-console.log("!!!",wordnik_bb);
+
 /*
   ======== A Handy Little Nodeunit Reference ========
   https://github.com/caolan/nodeunit
@@ -26,13 +26,21 @@ console.log("!!!",wordnik_bb);
 exports['init'] = {
   setUp: function(done) {
     // setup here
+    this.Wordnik = wordnik_bb.init('');
     done();
   },
-  'no args': function(test) {
+  'Wordnik object structure': function(test) {
     test.expect(2);
     // tests here
-    test.equal(typeof wordnik_bb, "object", "Wornik lib returns an object.");
+    test.equal(typeof wordnik_bb, "object", "Wordnik lib returns an object.");
     test.equal(typeof wordnik_bb.init, "function", 'The object has an init function');
+    test.done();
+  },
+  'Word model': function(test) {
+    test.expect(2);
+    test.equal(typeof this.Wordnik.Word, "function", "Word is a function (constructor)");
+    var word = new this.Wordnik.Word({ word: 'kings' });
+    test.ok(word.idAttribute, "Word constructor returns a Backbone Model");
     test.done();
   }
 };
