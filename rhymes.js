@@ -1,8 +1,36 @@
 var APIKEY = 'd4711e36506fe047f12970c6fdc0b43f6e4fef2e855e03d5c';
 var Wordnik = require('./lib/wordnik-bb.js').init(APIKEY);
 var $ = require('jquery');
+var I = require('inflection');
+var request = require('request');
+
+var url = "http://api.wordnik.com//v4/words.json/randomWord?includePartOfSpeech=noun&excludePartOfSpeech=proper-noun,proper-noun-plural,proper-noun-posessive,suffix,family-name,idiom,affix&minCorpusCount=5000&api_key=" + APIKEY;
+var deferred = $.Deferred();
+var randomWordPromise = deferred.promise();
+request({
+  url : url
+}, function(error, response, body) {
+  if (!error && response.statusCode === 200) {
+    //console.log(JSON.parse(body).word);
+    //console.log(I.singularize(JSON.parse(body).word));
+    var word = new Wordnik.Word({word: I.singularize(JSON.parse(body).word), params:{
+        relationshipTypes: 'rhyme',
+        limitPerRelationshipType: 100,
+        hasDictionaryDef: true
+      }});
+    word.getWord()
+     .then( function() {
+        deferred.resolve(word);
+      });
+
+  }
+  else {
+    deferred.reject(error);
+  }
+});
 
 // Here's an example of using the getRandomWordModel function, which behind the scenes generates a random word and then creates a Wordnik.Word model based on it.
+/*
 var randomWordPromise = Wordnik.getRandomWordModel({
     includePartOfSpeech: "noun",
     excludePartOfSpeech: "proper-noun,proper-noun-plural,proper-noun-posessive,suffix,family-name,idiom,affix",
@@ -14,6 +42,7 @@ var randomWordPromise = Wordnik.getRandomWordModel({
     }
   }
 );
+*/
 
 randomWordPromise.done(function(word) {
   //console.log("The model for our random word: ", word);
@@ -47,9 +76,11 @@ randomWordPromise.done(function(word) {
                 "You hear my freestyle and you drop your ",
                 "My flow and my style both blow away the ",
                 "My posse's got my back and my homies got my ",
-                "Sweeter than molasses, and stronger than a "
+                "Sweeter than molasses, and stronger than a ",
+                "Try to step to me and I'mma wreck your ",
+                "Wherever I go, people give me some "
               ];
-             console.log( pre[Math.floor(Math.random()*pre.length)] + word2);
+             console.log( pre[Math.floor(Math.random()*pre.length)] + I.singularize(word2));
            }
            else if (pos === 'verb-transitive') {
              console.log("My rhyme profile makes the ladies " + word2);
