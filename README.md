@@ -8,7 +8,7 @@ Make sure you have a [Wordnik API key](http://developer.wordnik.com/) and pass i
 
 ```javascript
 var APIKEY = 'YOURAPIKEY';
--var Wordnik = require('wordnik-bb').init(APIKEY);
+var Wordnik = require('wordnik-bb').init(APIKEY);
 ```
 
 ## Examples
