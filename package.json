@@ -1,7 +1,7 @@
 {
   "name": "wordnik-bb",
   "description": "An interface to the Wordnik API, which lets you get dictionary definitions, random words, pronunciation, and more! Built with Backbone.js, and uses promises.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "homepage": "https://github.com/dariusk/wordnik-bb",
   "author": {
     "name": "Darius Kazemi",
